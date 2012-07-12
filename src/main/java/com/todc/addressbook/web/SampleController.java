@@ -1,4 +1,4 @@
-package com.todc.sample.web;
+package com.todc.addressbook.web;
 
 
 import org.slf4j.Logger;
