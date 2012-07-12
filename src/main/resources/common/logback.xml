@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <configuration>
 
+  <!--
+  Propagates changes made to the level of any logback-classic logger onto the
+  java.util.logging framework. Such propagation eliminates the performance
+  impact of disabled log statements. Instances of LogRecord will be sent to
+  logback (via SLF4J) only for enabled log statements.
+
+  Setting the resetJUL property of LevelChangePropagator will reset all
+  previous level configurations of all j.u.l. loggers. However, previously
+  installed handlers will be left untouched.
+
+  http://logback.qos.ch/manual/configuration.html
+  -->
+  <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+    <resetJUL>true</resetJUL>
+  </contextListener>
+
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
       <pattern>%date [%thread] %-5level %logger{36} - [%X{username}] - %msg%n</pattern>
@@ -15,7 +31,7 @@
       <maxHistory>30</maxHistory> <!-- days -->
     </rollingPolicy>
     <encoder>
-      <Pattern>%date [%thread] %-5level %logger{35} - %msg%n</Pattern>
+      <Pattern>%date [%thread] %-5level %logger{36} - [%X{username}] - %msg%n</Pattern>
     </encoder>
   </appender>
 
@@ -36,22 +52,15 @@
     </layout>
   </appender>
 
-  <logger name="com.todc">
-    <level value="DEBUG" />
-  </logger>
+  <logger name="com.todc" level="DEBUG" />
+  <logger name="org.springframework" level="WARN" />
 
-  <logger name="org.springframework">
-    <level value="WARN" />
-  </logger>
-
-  <root>
-    <level value="INFO" />
+  <root level="INFO">
     <appender-ref ref="APP_FILE" />
     <appender-ref ref="STDOUT" />
   </root>
 
-  <root>
-    <level value="ERROR" />
+  <root level="ERROR">
     <appender-ref ref="EMAIL" />
   </root>
 

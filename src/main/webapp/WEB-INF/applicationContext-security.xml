@@ -11,8 +11,8 @@
   <http pattern="/js/**"  security="none"/>
 
   <http use-expressions="true" auto-config="true" entry-point-ref="authenticationProcessingFilterEntryPoint">
-    <intercept-url pattern="/app/**"  requires-channel="https" access="hasRole('USER')"/>
-    <!--<intercept-url pattern="/**"      requires-channel="https" access="ROLE_ANONYMOUS"/>-->
+    <intercept-url pattern="/app/**" requires-channel="https" access="hasRole('USER')"/>
+    <!--<intercept-url pattern="/**"     requires-channel="https" access="hasRole('ROLE_ANONYMOUS')"/>-->
 
     <form-login login-page="/login"
                 default-target-url='/app/index'
@@ -20,14 +20,15 @@
 
     <logout logout-success-url="/login" />
 
+    <!--
     <session-management>
       <concurrency-control max-sessions="1" />
     </session-management>
+    -->
   </http>
 
   <!-- Automatically receives AuthenticationEvent messages -->
   <b:bean id="loggerListener" class="org.springframework.security.authentication.event.LoggerListener"/>
-
 
   <b:bean id="authenticationProcessingFilterEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
     <b:property name="loginFormUrl" value="/login" />

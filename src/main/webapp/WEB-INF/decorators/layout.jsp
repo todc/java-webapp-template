@@ -19,7 +19,6 @@
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-      <img src="<c:url value="/img/logo.png"/>" alt="Logo" id="logo" height="18">
       <a class="brand" href="<c:url value="/" />"><fmt:message key="app.name"/></a>
       <ul class="nav">
         <sec:authorize access="isAuthenticated()">

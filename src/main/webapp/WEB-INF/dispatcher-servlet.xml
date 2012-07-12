@@ -22,7 +22,7 @@
   <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
         p:requestContextAttribute="rc"
         p:viewClass="org.springframework.web.servlet.view.JstlView"
-        p:prefix="/WEB-INF/jsp/"
+        p:prefix="/WEB-INF/views/"
         p:suffix=".jsp" />
 
   <!--
@@ -33,16 +33,16 @@
         p:useCodeAsDefaultMessage="true" />
 
 
+  <!--
   <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
     <property name="defaultErrorView" value="error"/>
-    <!--
     <property name="exceptionMappings">
       <props>
         <prop key="DataAccessException">data-error</prop>
       </props>
     </property>
-    -->
   </bean>
+  -->
 
 
   <!-- Convenient way to map URLs to JSPs w/o having a Controller -->
