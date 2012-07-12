@@ -1,4 +1,4 @@
-package com.todc.sample.web.filter;
+package com.todc.addressbook.web.filter;
 
 
 import java.io.IOException;

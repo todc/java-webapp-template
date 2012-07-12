@@ -24,10 +24,10 @@
   </appender>
 
   <appender name="APP_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <file>${catalina.base}/logs/sample-webapp.log</file>
+    <file>${catalina.base}/logs/address-book-demo.log</file>
     <append>true</append>
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-      <fileNamePattern>sample-webapp.%d{yyyy-MM-dd}.log</fileNamePattern>
+      <fileNamePattern>address-book-demo.%d{yyyy-MM-dd}.log</fileNamePattern>
       <maxHistory>30</maxHistory> <!-- days -->
     </rollingPolicy>
     <encoder>
@@ -46,7 +46,7 @@
 
     <to>test@localhost</to>
     <from>noreply@localhost</from>
-    <subject>[SAMPLE] %X{username} - %m</subject>
+    <subject>[ADDRESS_BOOK] %X{username} - %m</subject>
     <layout class="ch.qos.logback.classic.PatternLayout">
       <pattern>%date %-5level %logger{36} - [%X{username}] - %message%n</pattern>
     </layout>

@@ -2,7 +2,7 @@
 <%@ include file="/common/taglibs.jsp"%>
 <html>
 <head>
-  <title><decorator:title default="Sample Webapp" /></title>
+  <title><decorator:title default="Address Book Demo" /></title>
 
   <link rel="stylesheet" type="text/css" href="<c:url value="/css/bootstrap-2.0.4.css"/>" />
   <link rel="stylesheet" type="text/css" href="<c:url value="/css/google-bootstrap.css"/>" />

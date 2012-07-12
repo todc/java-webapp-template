@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
   <url>http://maven.apache.org</url>
 
-  <groupId>com.todc.sample</groupId>
-  <artifactId>sample-webapp</artifactId>
+  <groupId>com.todc.demo</groupId>
+  <artifactId>address-book-demo</artifactId>
   <packaging>war</packaging>
   <version>1.0.0</version>
-  <name>Sample Webapp</name>
+  <name>Address Book Demo</name>
 
   <developers>
     <developer>
