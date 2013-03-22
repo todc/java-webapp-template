@@ -1,0 +1,1 @@
+INSERT INTO contacts (first_name, last_name, email, home_phone) VALUES ('Tim', 'O''Donnell', 'tim@timodonnell.com', '408.718.4358');
