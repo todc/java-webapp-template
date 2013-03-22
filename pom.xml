@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <url>http://maven.apache.org</url>
 
-  <groupId>com.todc.demo</groupId>
+  <groupId>com.todc.addressbook</groupId>
   <artifactId>address-book-demo</artifactId>
   <packaging>war</packaging>
   <version>1.0.0</version>
@@ -13,7 +13,7 @@
     <developer>
       <id>todc</id>
       <name>Tim O'Donnell</name>
-      <email>odonnellt@gmail.com</email>
+      <email>tim@timodonnell.com</email>
       <roles>
         <role>Author</role>
       </roles>
@@ -42,13 +42,9 @@
     <servlet.version>2.5</servlet.version>
     <sitemesh.version>2.4.2</sitemesh.version>
     <slf4j.version>1.6.6</slf4j.version>
-    <spring.version>3.1.1.RELEASE</spring.version>
-    <!--
-     There seems to be a problem with v3.1.1, where sessions are lost
-     immediately after logging in.
-    -->
-    <spring-security.version>3.1.0.RELEASE</spring-security.version>
-    <tomcat.version>7.0.29</tomcat.version>
+    <spring.version>3.2.2.RELEASE</spring.version>
+    <spring-security.version>3.1.3.RELEASE</spring-security.version>
+    <tomcat.version>7.0.30</tomcat.version>
     <urlrewrite.version>3.2.0</urlrewrite.version>
   </properties>
 
@@ -281,11 +277,10 @@
         </executions>
       </plugin>
 
-
+      <!-- Compile JSP pages -->
       <plugin>
-        <groupId>org.codehaus.mojo.jspc</groupId>
+        <groupId>org.codehaus.mojo</groupId>
         <artifactId>jspc-maven-plugin</artifactId>
-        <version>${jspc.maven.plugin}</version>
         <executions>
           <execution>
             <id>jspc</id>
@@ -294,56 +289,13 @@
             </goals>
           </execution>
         </executions>
-        <!-- Use the Tomcat 6 JSP compiler since there's no plugin for Tomcat 7 -->
-        <dependencies>
-          <dependency>
-            <groupId>org.codehaus.mojo.jspc</groupId>
-            <artifactId>jspc-compiler-tomcat6</artifactId>
-            <version>${jspc.maven.plugin}</version>
-
-            <exclusions>
-              <exclusion>
-                <groupId>org.apache.tomcat</groupId>
-                <artifactId>jasper</artifactId>
-              </exclusion>
-              <exclusion>
-                <groupId>org.apache.tomcat</groupId>
-                <artifactId>jasper-el</artifactId>
-              </exclusion>
-              <exclusion>
-                <groupId>org.apache.tomcat</groupId>
-                <artifactId>jasper-jdt</artifactId>
-              </exclusion>
-              <exclusion>
-                <groupId>org.apache.tomcat</groupId>
-                <artifactId>servlet-api</artifactId>
-              </exclusion>
-              <exclusion>
-                <groupId>org.apache.tomcat</groupId>
-                <artifactId>jsp-api</artifactId>
-              </exclusion>
-              <exclusion>
-                <groupId>org.apache.tomcat</groupId>
-                <artifactId>el-api</artifactId>
-              </exclusion>
-              <exclusion>
-                <groupId>org.apache.tomcat</groupId>
-                <artifactId>annotations-api</artifactId>
-              </exclusion>
-            </exclusions>
-          </dependency>
-          <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-jasper</artifactId>
-            <version>${tomcat.version}</version>
-          </dependency>
-        </dependencies>
       </plugin>
 
+      <!-- Assemble war -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
-        <version>${maven.war.plugin}</version>
+        <version>2.2</version>
         <configuration>
           <webXml>${basedir}/target/jspweb.xml</webXml>
           <warSourceExcludes>**/*.jsp</warSourceExcludes>
