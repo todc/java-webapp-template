@@ -8,9 +8,11 @@
 		      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
 		      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
+  <!--
+		- The controllers are autodetected POJOs labeled with the @Controller annotation.
+	-->
   <context:component-scan base-package="com.todc.addressbook.web"/>
 
-  <!-- Configures the @Controller programming model -->
   <mvc:annotation-driven/>
 
   <!--
@@ -20,8 +22,6 @@
     - will be mapped to "/WEB-INF/jsp/index.jsp".
   -->
   <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-        p:requestContextAttribute="rc"
-        p:viewClass="org.springframework.web.servlet.view.JstlView"
         p:prefix="/WEB-INF/views/"
         p:suffix=".jsp" />
 
@@ -31,43 +31,5 @@
   <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
         p:basename="messages"
         p:useCodeAsDefaultMessage="true" />
-
-
-  <!--
-  <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-    <property name="defaultErrorView" value="error"/>
-    <property name="exceptionMappings">
-      <props>
-        <prop key="DataAccessException">data-error</prop>
-      </props>
-    </property>
-  </bean>
-  -->
-
-
-  <!-- Convenient way to map URLs to JSPs w/o having a Controller -->
-  <!--
-  <mvc:view-controller path="/login" view-name="login"/>
-  -->
-
-  <!--
-  <bean id="stringHttpMessageConverter" class="org.springframework.http.converter.StringHttpMessageConverter"/>
-  -->
-
-  <!-- Annotation Handler Mapping -->
-  <!--
-  <bean id="handlerMapping" class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
-  -->
-
-  <!-- Method Handler Mapping -->
-  <!--
-  <bean id="handlerAdapter" class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
-    <property name="messageConverters">
-      <list>
-        <ref bean="stringHttpMessageConverter" />
-      </list>
-    </property>
-  </bean>
-  -->
 
 </beans>

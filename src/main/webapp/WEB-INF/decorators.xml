@@ -12,7 +12,6 @@
     <pattern>*.html</pattern>
   </excludes>
 
-  <!-- Main page decorator used by the 'Browse Requests' page -->
   <decorator name="main" page="layout.jsp">
     <pattern>/*</pattern>
   </decorator>

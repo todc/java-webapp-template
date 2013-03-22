@@ -70,7 +70,7 @@
 
   <filter>
     <filter-name>userMDCFilter</filter-name>
-    <filter-class>com.todc.addressbook.web.filter.UserMDCFilter</filter-class>
+    <filter-class>com.todc.web.filter.UserMDCFilter</filter-class>
   </filter>
 
   <filter>
@@ -141,7 +141,7 @@
   </session-config>
 
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
+    <welcome-file>index</welcome-file>
   </welcome-file-list>
 
 </web-app>

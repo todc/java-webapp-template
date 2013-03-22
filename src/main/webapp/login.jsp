@@ -1,30 +1,50 @@
-<%@ include file="/common/taglibs.jsp"%>
-
+<%@ include file="/common/taglibs.jsp" %>
+<!DOCTYPE html>
+<html>
 <head>
-  <title><fmt:message key="page.login.title"/></title>
+  <title>Address Book Demo :: Login</title>
+  <link rel="stylesheet" type="text/css" href="${ctx}/css/app/login.css" />
 </head>
-<body id="login">
+<body>
 
-  <form accept-charset="UTF-8" action="<c:url value="/j_spring_security_check"/>" method="POST" class="well login-form">
-    <fieldset>
-      <h2><fmt:message key="page.login.title"/></h2>
+<div class="container-fluid">
+
+  <div class="signin">
+    <div class="signin-box">
+      <h2 class="form-signin-heading">Sign in</h2>
 
       <c:if test="${param.invalid}">
-      <div class="error"><fmt:message key="page.login.invalid_credentials"/></div>
+        <div class="alert alert-error">
+          <strong>Invalid username or password.</strong>
+        </div>
       </c:if>
 
-      <label for="username"><strong><fmt:message key="page.login.username"/></strong></label>
-      <input type="text" id="username" name="j_username" />
-      <label for="password"><strong><fmt:message key="page.login.password"/></strong></label>
-      <input type="password" id="password" name="j_password" />
+      <form accept-charset="UTF-8" action="<c:url value='j_spring_security_check'/>" method="post">
+        <fieldset>
+          <label for="username">Username</label>
+          <input type="text" class="input-block-level" name="j_username" id="username">
+          <label for="passwd">Password</label>
+          <input type="password" class="input-block-level" name="j_password" id="passwd">
 
-      <input class="btn btn-primary" name="submit" type="submit" value="Login" />
-      <label class="checkbox">
-        <input type="checkbox" id="remember_me" value="1" />
-        <fmt:message key="page.login.remember"/>
-      </label>
-    </fieldset>
-  </form>
+          <input type="submit" class="btn btn-primary" value="Sign in">
+          <label class="remember">
+            <input type="checkbox" name="rememberMe" value="yes">
+            <strong class="remember-label">Stay signed in</strong>
+          </label>
+        </fieldset>
+      </form>
+
+      <!--
+      <ul>
+        <li>
+          <a id="link-forgot-pwd" href="#">Can't access your account?</a>
+        </li>
+      </ul>
+      -->
+    </div>
+  </div>
+
+</div>
 
 <script type="text/javascript">
   $(function() {
@@ -33,3 +53,4 @@
 </script>
 
 </body>
+</html>
