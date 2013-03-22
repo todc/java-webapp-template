@@ -8,7 +8,6 @@
 <html>
 <head>
   <title><fmt:message key="errorPage.title"/></title>
-  <link rel="stylesheet" type="text/css" media="all" href="<c:url value='/css/bootstrap-2.0.4.css'/>" />
 </head>
 
 <body id="error">

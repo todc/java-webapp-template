@@ -1,5 +1,5 @@
 CREATE TABLE contacts (
-  id          BIGINT IDENTITY PRIMARY KEY,
+  id          IDENTITY,
   first_name  VARCHAR(128),
   last_name   VARCHAR(128),
   email       VARCHAR(256),

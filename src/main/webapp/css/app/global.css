@@ -1,3 +1,11 @@
+table {
+  font-size: 100%;
+}
+table thead th {
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
 .navbar-inverse .brand {
   color: #fff;
 }

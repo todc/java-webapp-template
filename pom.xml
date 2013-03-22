@@ -30,8 +30,11 @@
     <commons-dbcp.version>1.4</commons-dbcp.version>
     <commons.lang3.version>3.1</commons.lang3.version>
     <hibernate.version>4.1.4.Final</hibernate.version>
+    <hibernate-validator.version>4.0.2.GA</hibernate-validator.version>
     <hsqldb.version>1.8.0.10</hsqldb.version>
+    <jackson.version>2.1.1</jackson.version>
     <java.version>1.6</java.version>
+    <javax-validation.version>1.0.0.GA</javax-validation.version>
     <javamail.version>1.4.5</javamail.version>
     <jspc.maven.plugin>2.0-alpha-3</jspc.maven.plugin>
     <jstl.version>1.2</jstl.version>
@@ -211,6 +214,18 @@
       <version>${commons.lang3.version}</version>
     </dependency>
 
+    <!-- JSR-303 Validation -->
+    <dependency>
+      <groupId>javax.validation</groupId>
+      <artifactId>validation-api</artifactId>
+      <version>${javax-validation.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>${hibernate-validator.version}</version>
+    </dependency>
+
     <dependency>
       <groupId>opensymphony</groupId>
       <artifactId>sitemesh</artifactId>
@@ -222,6 +237,13 @@
       <artifactId>urlrewritefilter</artifactId>
       <version>${urlrewrite.version}</version>
     </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+
 
     <dependency>
       <groupId>javax.activation</groupId>
