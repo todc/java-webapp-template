@@ -29,9 +29,9 @@
     <activation.version>1.1</activation.version>
     <commons-dbcp.version>1.4</commons-dbcp.version>
     <commons.lang3.version>3.1</commons.lang3.version>
-    <hibernate.version>4.1.4.Final</hibernate.version>
+    <hibernate.version>4.1.11.Final</hibernate.version>
     <hibernate-validator.version>4.0.2.GA</hibernate-validator.version>
-    <hsqldb.version>1.8.0.10</hsqldb.version>
+    <hsqldb.version>2.2.9</hsqldb.version>
     <jackson.version>2.1.1</jackson.version>
     <java.version>1.6</java.version>
     <javax-validation.version>1.0.0.GA</javax-validation.version>
@@ -196,7 +196,7 @@
       <version>${mysql-connector.version}</version>
     </dependency>
     <dependency>
-      <groupId>hsqldb</groupId>
+      <groupId>org.hsqldb</groupId>
       <artifactId>hsqldb</artifactId>
       <version>${hsqldb.version}</version>
     </dependency>
