@@ -2,8 +2,10 @@ package com.todc.addressbook.domain;
 
 
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -18,13 +20,17 @@ public class Contact {
     // ----------------------------------------------------- Instance Variables
 
 
-    @Id
+    @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+
+    @Column(name = "prefix")
+    private String prefix;
 
     @Column(name = "first_name")
     private String firstName;
 
+    @NotEmpty
     @Column(name = "last_name")
     private String lastName;
 
@@ -41,6 +47,14 @@ public class Contact {
 
     public void setId(Long p_id) {
         id = p_id;
+    }
+
+    public String getPrefix() {
+        return prefix;
+    }
+
+    public void setPrefix(String p_prefix) {
+        prefix = p_prefix;
     }
 
     public String getFirstName() {
@@ -73,5 +87,9 @@ public class Contact {
 
     public String toString() {
         return ToStringBuilder.reflectionToString(this);
+    }
+
+    public boolean isNew() {
+        return id == null;
     }
 }

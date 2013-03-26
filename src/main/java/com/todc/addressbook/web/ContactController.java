@@ -10,11 +10,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
+import javax.validation.Valid;
+import java.util.Collection;
 import java.util.List;
 
 
@@ -49,15 +53,21 @@ public class ContactController {
     // --------------------------------------------------------- Public Methods
 
 
+//    @InitBinder
+//    protected void initBinder(WebDataBinder binder) {
+//        binder.setValidator(new ContactValidator());
+//    }
+
+
     /**
      * List all contacts.
      *
-     * @return
+     * @return ModelAndView
      * @throws Exception
      */
     @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public ModelAndView index() throws Exception {
-        LOG.debug("start SampleController > index");
+    public ModelAndView indexAction() throws Exception {
+        LOG.debug("start SampleController > indexAction");
 
         List<Contact> contacts = contactRepo.findAll();
 
@@ -65,6 +75,56 @@ public class ContactController {
         mav.addObject("contacts", contacts);
 
         return mav;
+    }
+
+
+    /**
+     * Display the New Contact form.
+     *
+     * @return ModelAndView
+     * @throws Exception
+     */
+    @RequestMapping(value = "/new", method = RequestMethod.GET)
+    public ModelAndView newAction() throws Exception {
+        LOG.debug("start SampleController > newAction");
+
+        ModelAndView mav = new ModelAndView("new");
+        mav.addObject("contact", new Contact());
+
+        return mav;
+    }
+
+
+    /**
+     * Create a new contact.
+     *
+     * @param newContact
+     * @param result
+     * @param flash
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/new", method = RequestMethod.POST)
+    public String createAction(@Valid Contact newContact, BindingResult result, RedirectAttributes flash) throws Exception {
+        if (result.hasErrors()) {
+            return "new";
+        }
+
+        contactRepo.save(newContact);
+
+        flash.addFlashAttribute("flash", "Success!");
+
+        return "redirect:index";
+    }
+
+
+    @ModelAttribute("prefixes")
+    public String[] populatePrefixes() {
+        return new String[] {
+            "Mr.",
+            "Mrs.",
+            "Ms."
+        };
     }
     
 }

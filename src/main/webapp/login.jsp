@@ -11,36 +11,28 @@
 
   <div class="signin">
     <div class="signin-box">
-      <h2 class="form-signin-heading">Sign in</h2>
+      <h2 class="form-signin-heading"><fmt:message key="page.login.title" /></h2>
 
       <c:if test="${param.invalid}">
         <div class="alert alert-error">
-          <strong>Invalid username or password.</strong>
+          <strong><fmt:message key="page.login.invalid_credentials" /></strong>
         </div>
       </c:if>
 
       <form accept-charset="UTF-8" action="<c:url value='j_spring_security_check'/>" method="post">
         <fieldset>
-          <label for="username">Username</label>
+          <label for="username"><fmt:message key="page.login.username" /></label>
           <input type="text" class="input-block-level" name="j_username" id="username">
-          <label for="passwd">Password</label>
+          <label for="passwd"><fmt:message key="page.login.password" /></label>
           <input type="password" class="input-block-level" name="j_password" id="passwd">
 
           <input type="submit" class="btn btn-primary" value="Sign in">
           <label class="remember">
             <input type="checkbox" name="rememberMe" value="yes">
-            <strong class="remember-label">Stay signed in</strong>
+            <strong class="remember-label"><fmt:message key="page.login.remember" /></strong>
           </label>
         </fieldset>
       </form>
-
-      <!--
-      <ul>
-        <li>
-          <a id="link-forgot-pwd" href="#">Can't access your account?</a>
-        </li>
-      </ul>
-      -->
     </div>
   </div>
 

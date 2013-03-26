@@ -11,6 +11,7 @@
 
   <script type="text/javascript" src="${ctx}/js/vendor/jquery-1.9.1-min.js"></script>
   <script type="text/javascript" src="${ctx}/js/vendor/select2.js"></script>
+  <script type="text/javascript" src="${ctx}/js/app/app.js"></script>
 
   <decorator:head/>
 </head>
